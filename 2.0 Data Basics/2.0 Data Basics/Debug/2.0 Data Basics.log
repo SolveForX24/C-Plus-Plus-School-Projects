@@ -1,0 +1,5 @@
+﻿  2.0 Data Basics.cpp
+C:\Users\compsci\source\repos\2.0 Data Basics\2.0 Data Basics\2.0 Data Basics.cpp(11,5): error C2065: 'cout': undeclared identifier
+C:\Users\compsci\source\repos\2.0 Data Basics\2.0 Data Basics\2.0 Data Basics.cpp(12,5): error C2065: 'cin': undeclared identifier
+C:\Users\compsci\source\repos\2.0 Data Basics\2.0 Data Basics\2.0 Data Basics.cpp(14,5): error C2065: 'cout': undeclared identifier
+C:\Users\compsci\source\repos\2.0 Data Basics\2.0 Data Basics\2.0 Data Basics.cpp(15,1): error C2143: syntax error: missing ';' before '}'
