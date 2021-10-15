@@ -40,6 +40,20 @@ int main()
     // The rest is the "More Problems" worksheet.
 
     // Pounds to ounces.
+    int pounds;
+
+    // Reading in the pounds to instantiated variable, then printing out it's conversion.
+    cout << "\n\n\nWhat is the weight of your package in pounds? ";
+    cin >> pounds ;
+    cout << "The weight of your package in ounces is " << pounds * 16 << " ounces.";
+
+    // Inches to feet and inches.
+    int inches;
+
+    // Reading in the inches to instantiated variable, then printing out it's conversion.
+    cout << "\nWhat is your height in inches? ";
+    cin >> inches;
+    cout << "Your height in feet and inches is " << inches / 12 << " feet and " << inches % 12 << " inches.";
 }
 
 
