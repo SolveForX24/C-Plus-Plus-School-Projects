@@ -20,20 +20,24 @@ int main()
     int teamCount = teamMemberCounts / 5;
     cout << "There will be " << teamCount << " teams of 5 with " << teamMemberCounts % 5 << " students left over.";
 
+    // Using division and modulus to seperate the digits of a 3 digit number, then adding and multyplying them togeter.
     int threeDigit;
     cout << "\nWhat 3 digit number would you like to use? ";
     cin >> threeDigit;
     int digitOne = threeDigit / 100;
     cout << "First Digit: " << digitOne;
-    int digitTwo = threeDigit / 10 / 10;
+    int digitTwo = (threeDigit % 100) / 10;
     cout << "\nSecond Digit: " << digitTwo;
+    int digitThree = threeDigit % 10;
+    cout << "\nThird Digit: " << digitThree;
+    cout << "\nThe sum of the digits is " << (digitOne + digitTwo + digitThree) << ", and the product is " << (digitOne * digitTwo * digitThree) << ".";
 
     // This section is the "Using Strings" worksheet
-    // EXTRA: Adds your name to the printing out of the birthday and color.
+    // EXTRA: Adds your name to the printing out of the age and color.
 
     // Concatenation
     string instagramName;
-    cout << "\nPlease enter your instagram handle: ";
+    cout << "\n\nPlease enter your instagram handle: ";
     cin >> instagramName;
     cout << instagramName + " has +1M followers";
 
@@ -64,13 +68,14 @@ int main()
     string luke = "Skywalker, Luke";
     cout << "\n" << luke.substr(11, 4) << " " << luke.substr(0, 9);
 
-    string userBirthday;
+    // Simple reading in strings, then printing them out.
+    string userAge;
     string userColor;
-    cout << "\nPlease enter your birthday: ";
-    getline(cin, userBirthday);
+    cout << "\nPlease enter your age: ";
+    getline(cin, userAge);
     cout << "Please enter your favorite color: ";
     getline(cin, userColor);
-    cout << userName << "'s birthday: " << userBirthday << "\n" << userName << "'s favorite color: " << userColor;
+    cout << userName << "'s age: " << userAge << "\n" << userName << "'s favorite color: " << userColor;
 
     // Counting characters
     string sentence;
@@ -80,11 +85,13 @@ int main()
 
 
     // This section is the code for the worksheet "Using cin and setprecision"\
-    // EXTRA: The Burger Joint also sells milkshakes for $1.50
+    // EXTRA: The Burger Joint also sells milkshakes for $1.50, and if you don't give enough money for the Burger Joint you get kicked out of the store
 
     // Pizza Place
     double pizzaPrice;
     int pizzaSize;
+
+    // Gets size input, establishes a setPrecision, and calculates cost of the pizza.
     cout << "\n\nHow big do you want your pizza to be (inches across)? ";
     cin >> pizzaSize;
     pizzaPrice = (0.05 * pizzaSize * pizzaSize) + 1.2;
@@ -99,19 +106,33 @@ int main()
     double cost;
     double tax;
     double finalCost;
+    double tenderedMoney;
 
-    cout << "\nHow many burgers would you like? ";
+    // Assigning input to variables.
+    cout << "\nHow many burgers ($1.99) would you like? ";
     cin >> burgers;
-    cout << "How many fries would you like? ";
+    cout << "How many fries ($.99) would you like? ";
     cin >> fries;
-    cout << "How many sodas would you like? ";
+    cout << "How many sodas ($1.10) would you like? ";
     cin >> sodas;
-    cout << "How many shakes would you like? ";
+    cout << "How many shakes ($1.50) would you like? ";
     cin >> shakes;
+
+    // Calculating cost, tax and total cost, then printing out that information.
     cost = (burgers * 1.99) + (fries * .99) + (sodas * 1.1) + (shakes * 1.5);
     tax = cost * 0.07;
     finalCost = cost + tax;
     cout << "Cost before tax: $" << cost << "\nTax: $" << tax << "\nTotal cost: $" << finalCost;
+
+    // Getting amount tendered, then checking if amount is more then cost. If not, get kicked out. Else, provide change.
+    cout << "\nHow much money have you tendered? $";
+    cin >> tenderedMoney;
+    if (tenderedMoney < finalCost) {
+        cout << "That isn't enough money! Get out of my store!";
+    }
+    else {
+        cout << "The amount of change is $" << (tenderedMoney - finalCost);
+    }
 
 }
 
