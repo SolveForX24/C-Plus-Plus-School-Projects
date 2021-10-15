@@ -1,6 +1,13 @@
 // 2.0 Data Basics.cpp : This file contains the 'main' function. Program execution begins and ends there.
 //
 
+/*
+    Name: Xander Russell
+    Date: 10/15/21
+    Lab: 2.0 Data Basics
+    Extra: Detailed in each section's header.
+*/
+
 #include <iostream>
 #include <string>;
 #include <iomanip>;
