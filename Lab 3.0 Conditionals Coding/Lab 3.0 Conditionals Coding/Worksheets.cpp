@@ -7,7 +7,24 @@ using namespace std;
 
 void worksheet1(string wsName) {
     cout << endl << "worksheet: " << wsName << endl << endl;
-    //Put all code for worksheet 1 here
+    
+	// Logical Operators worksheet
+
+	int dogs;
+	int cats;
+
+	// Reading in info then using if and if else statements to print out the proper statement
+	cout << "How many dogs do you have? ";
+	cin >> dogs;
+	cout << "How many cats do you have? ";
+	cin >> cats;
+
+	if (dogs == cats) {
+		cout << "Do your cats and dogs get along?";
+	}
+	else if (dogs > cats) {
+
+	}
 }
 
 void worksheet2(string wsName) {
