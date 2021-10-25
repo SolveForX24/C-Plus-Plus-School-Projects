@@ -109,8 +109,8 @@ void worksheet2(string wsName) {
 }
 
 void worksheet3(string wsName) {
-    cout << endl << "worksheet: " << wsName << endl << endl;
-    
+	cout << endl << "worksheet: " << wsName << endl << endl;
+
 	// If Else Worksheet
 
 	// Part 1: Can You Drive?
@@ -124,7 +124,7 @@ void worksheet3(string wsName) {
 
 	cout << "What is your age? ";
 	cin >> age;
-	
+
 	// Making comparisons
 	if (age >= 16) {
 		cout << "It's scary, " << name << ", you can drive now!\n\n";
@@ -135,6 +135,41 @@ void worksheet3(string wsName) {
 	else {
 		cout << "You must wait " << 16 - age << " years until you can drive.\n\n";
 	}
+
+	// Part 2: Even or Odd
+
+	int integerToCheck;
+
+	// Reading in input
+	cout << "What is the number you want to check? ";
+	cin >> integerToCheck;
+
+	// Making comparisons
+	if ((integerToCheck & 2) == 1) {
+		cout << "Your number is even!\n\n";
+	}
+	else {
+		cout << "Your number is odd!\n\n";
+	}
+
+	// Part 3: Telegrams
+
+	double wordsInTelegram;
+
+	// Reading in input
+	cout << "How many words are in your telegram? ";
+	cin >> wordsInTelegram;
+
+	// Making comparisons, doing some math
+
+	if (wordsInTelegram <= 15) {
+		cout << "Your telegram costs $8.50.\n\n";
+	}
+	else {
+		cout << "Your telegram costs $" << 8.5 * ((wordsInTelegram - 15) * .25) << ".\n\n";
+	}
+
+	// Part 4: 
 	getline(cin, dummy);
 }
 
