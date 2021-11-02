@@ -1,14 +1,21 @@
 #include "Worksheets.h"
 #include <iostream>
 #include <string>
+#include <cmath>
 #include <iomanip>;
 
 /*
 	Name: Xander Russell
 	Date: 10/21/20
 	Assignment: Lab 2.0 Conditionals
-	Extra: Detailed in each section
+	Extra: 
+		Worksheet 1: Has a check in if-else statement for if you have 0 dogs or cats, and if you have a medley of dogs and cats, also prints out for that in part 1.
+		Worksheet 2: Adds a check in it-else statement for the number 13 in part 1.
+		Worksheet 3: If you are less then 4 years old, then there is a funny prompt in part 1.
+		Worksheet 4: Shows the difference in character length for the movie names in part 2.
+		Worksheet 5: If number inputted is outside of range, then it prints how far from range that int is.
 */
+
 using namespace std;
 
 string dummy = "a";
@@ -17,6 +24,7 @@ void worksheet1(string wsName) {
     cout << endl << "worksheet: " << wsName << endl << endl;
     
 	// Logical Operators worksheet
+	// Extra in part 1
 
 
 	// Part 1: Dogs and Cats
@@ -67,6 +75,7 @@ void worksheet2(string wsName) {
     cout << endl << "worksheet: " << wsName << endl << endl;
     
 	// Working with If Worksheet
+	// Extra in part 1
 
 	// Part 1: Heinz Number
 	// EXTRA: Adds a check for the number 13
@@ -113,9 +122,11 @@ void worksheet3(string wsName) {
 	cout << endl << "worksheet: " << wsName << endl << endl;
 
 	// If Else Worksheet
+	// Extra in part 1
+
 
 	// Part 1: Can You Drive?
-	// EXTRA: If you are less then 4 years old, has funny prompt.
+	// EXTRA: If you are less then 4 years old, then there is a funny prompt.
 	string name;
 	int age = 0;
 
@@ -201,7 +212,7 @@ void worksheet3(string wsName) {
 	int intTwo;
 
 	// Getting input, running comparisons.
-	cout << "Please enter two integers: ";
+	cout << "Please enter two integers: \n";
 	cin >> intOne >> intTwo;
 
 	cout << "In ascending order: ";
@@ -240,6 +251,8 @@ void worksheet4(string wsName) {
 	std::cout << endl << "worksheet: " << wsName << endl << endl;
 
 	// More Working with If-Else
+	// Extra in part 2
+
 
 	// Part 1: Password 
 
@@ -301,10 +314,90 @@ void worksheet4(string wsName) {
 		cout << "... I'll take that as a yes! :)\n\n";
 	}
 
-
+	//getline(cin, dummy);
 }
 
 void worksheet5(string wsName) {
     std::cout << endl << "worksheet: " << wsName << endl << endl;
-    //Put all code for worksheet 5 here
+    
+	// Worksheet Switch
+	// Extra is in part 2
+
+
+	// Part 1: Grades
+
+	// Getting grade char
+	char grade;
+	cout << "What is your grade? (Enter A, B, C, D, or F) \n";
+	cin >> grade;
+
+	// Switch statement: Based on char variable, prints different messsage.
+
+	switch (grade) {
+		case 'A':
+			cout << "Your work is outstanding!\n";
+			break;
+		case 'B':
+			cout << "You are doing good work!\n";
+			break;
+		case 'C':
+			cout << "Your work is satisfactory.\n";
+			break;
+		case 'D':
+			cout << "You need to work a little harder.\n";
+			break;
+		case 'F':
+			cout << "Please see me for extra help!\n";
+			break;
+		default:
+			cout << "This is not a grade.\n";
+	}
+
+	// Part 2: Number Type
+	// EXTRA: If number inputted is outside of range, then it prints how far from range that int is.
+
+	// Getting toCheck int
+	int toCheck;
+	cout << "What number do you want to check between 1 and 10, inclusive? ";
+	cin >> toCheck;
+
+	// Switch statement to print message based on toCheck int.
+
+	switch (toCheck) {
+		case 1:
+		case 3:
+			cout << "Your number is a low odd number.\n";
+			break;
+		case 2:
+		case 4:
+			cout << "Your number is a low even number.\n";
+			break;
+		case 5:
+			cout << "Your number is the middle odd number.\n";
+			break;
+		case 6:
+			cout << "Your number is the middle even number.\n";
+			break;
+		case 7:
+		case 9:
+			cout << "Your number is a high odd number.\n";
+			break;
+		case 8:
+		case 10:
+			cout << "Your number is a high even number.\n";
+			break;
+		default:
+			if (toCheck < 1) {
+				cout << "Your number is not in range. It is " << abs(1 - toCheck) << " number(s) away from being in range.\n";
+			}
+			else if (toCheck > 10) {
+				cout << "Your number is not in range. It is " << abs(toCheck - 10) << " number(s) away from being in range.\n";
+			}
+			else {
+				cout << "Something has gone wrong. I'm not entirely sure how you are seeing this.";
+			}
+	}
+
+	getline(cin, dummy);
+
 }
