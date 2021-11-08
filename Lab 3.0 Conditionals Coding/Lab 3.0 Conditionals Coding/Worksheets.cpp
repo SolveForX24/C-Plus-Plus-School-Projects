@@ -65,7 +65,7 @@ void worksheet1(string wsName) {
 		cout << "Congratulations! You earn $" << moneyAmount << " because you entered a number in the range!\n\n";
 	}
 	else {
-		cout << "You didn't enter a number in range D: no money for you ):\n\n";
+		cout << "You didn't enter a number in range. D: No money for you ):\n\n";
 	}
 
 	getline(cin, dummy);
@@ -111,7 +111,7 @@ void worksheet2(string wsName) {
 		cout << "Lucky number! :D\n\n";
 	}
 	else {
-		cout << "Great! A number in range.\n\n";
+		cout << "Great! A number in range between 5 and 10.\n\n";
 	}
 	
 	getline(cin, dummy);
@@ -138,14 +138,14 @@ void worksheet3(string wsName) {
 	cin >> age;
 
 	// Making comparisons
-	if (age >= 16) {
+	if (age >= 17) {
 		cout << "It's scary, " << name << ", you can drive now!\n\n";
 	}
 	else if (age < 4) {
 		cout << "How are you using this program?\n\n";
 	}
 	else {
-		cout << "You must wait " << 16 - age << " years until you can drive.\n\n";
+		cout << "You must wait " << 17 - age << " year(s) until you can drive.\n\n";
 	}
 
 	// Part 2: Even or Odd
@@ -215,11 +215,13 @@ void worksheet3(string wsName) {
 	cout << "Please enter two integers: \n";
 	cin >> intOne >> intTwo;
 
-	cout << "In ascending order: ";
+	
 	if (intOne > intTwo) {
+		cout << "In ascending order: ";
 		cout << intTwo << " " << intOne << "\n\n";
 	}
 	else if (intTwo > intOne) {
+		cout << "In ascending order: ";
 		cout << intOne << " " << intTwo << "\n\n";
 	}
 	else {
@@ -235,7 +237,7 @@ void worksheet3(string wsName) {
 	cin >> ageArt;
 
 	if (ageArt <= 5) {
-		cout << "Entry fee: $0.00. You're free because you are so young.\n\n";
+		cout << "Entry fee: $0.00. You get in free because you are so young.\n\n";
 	}
 	else if (ageArt >= 65) {
 		cout << "Entry fee: $1.50.\n\n";
@@ -287,10 +289,10 @@ void worksheet4(string wsName) {
 
 	// Comparing those length integers
 	if (movieOneLength > movieTwoLength) {
-		cout << "Your first movie, " << movieOne << ", is longer then your second movie, " << movieTwo << ", by " << movieOneLength - movieTwoLength << " characters.\n\n";
+		cout << "Your first movie, " << movieOne << ", is longer than your second movie, " << movieTwo << ", by " << movieOneLength - movieTwoLength << " characters.\n\n";
 	}
 	else if (movieTwoLength > movieOneLength) {
-		cout << "Your second movie, " << movieTwo << ", is longer then your first movie, " << movieOne << ", by " << movieTwoLength - movieOneLength << " characters.\n\n";
+		cout << "Your second movie, " << movieTwo << ", is longer than your first movie, " << movieOne << ", by " << movieTwoLength - movieOneLength << " characters.\n\n";
 	}
 	else {
 		cout << "Your movies are equal in character length.\n\n";
@@ -311,7 +313,7 @@ void worksheet4(string wsName) {
 		cout << "Caught in the act! D: Your data is safe.\n\n";
 	}
 	else {
-		cout << "... I'll take that as a yes! :)\n\n";
+		cout << "... That is neither a yes or no, but I'll take that as a yes! :)\n\n";
 	}
 
 	//getline(cin, dummy);
@@ -349,8 +351,7 @@ void worksheet5(string wsName) {
 		case 'F':
 			cout << "Please see me for extra help!\n";
 			break;
-		default:
-			cout << "This is not a grade.\n";
+
 	}
 
 	// Part 2: Number Type
