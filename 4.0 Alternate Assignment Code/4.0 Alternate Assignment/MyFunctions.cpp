@@ -21,6 +21,7 @@ void MySampleFunction(void) {
     } while (!(getValidFloat(testMe2)) || (testMe2 < 5.2) || (testMe2 > 6));
 };
 
+/*
 string lowerCase(string s) {
     char str[] = s;
     char c;
@@ -36,3 +37,4 @@ string lowerCase(string s) {
 
     return str;
 }
+*/
