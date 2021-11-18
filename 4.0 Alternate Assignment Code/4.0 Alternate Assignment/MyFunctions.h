@@ -5,4 +5,4 @@
 
 //SAMPLE - if you delete this also delete the code in MyFunctions.cpp
 void MySampleFunction(void);
-string lowerCase(string);
+//string lowerCase(string);
