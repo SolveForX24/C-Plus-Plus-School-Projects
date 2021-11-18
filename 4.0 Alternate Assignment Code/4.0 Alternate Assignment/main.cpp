@@ -22,6 +22,7 @@ int main()
 	string name;
 	string dummy;
 	string order;
+	string continueOrder;
 	string shutDownPassword;
 	string shouldAbandon;
 
@@ -43,7 +44,6 @@ int main()
 	    drinkCount = 0;
 		popcornCount = 0;
 	    pizzaCount = 0;
-		toLowerCount = 0;
 
 
 		running = true;
@@ -52,13 +52,13 @@ int main()
 
 		cout << "What is your name? ";
 		getline(cin, name);
-		getline(cin, dummy);
+		//getline(cin, dummy);
 		
 		while (ordering) {
-			cout << "Please make an order:\n\n(B)everage	$5.00\n(C)andy	$2.25\n(H)ot Dog	$7.00\n(P)opcorn	$6.75\nP(i)zza	            $4.50\n\nPlease enter one of the letters in the parentheses for your order: ";
+			cout << "Please make an order:\n\n(B)everage	$5.00\n(C)andy      	$2.25\n(H)ot Dog	$7.00\n(P)opcorn	$6.75\nP(i)zza	        $4.50\n\nPlease enter one of the letters in the parentheses for your order: ";
 			cin >> order;
 
-			order = lowerCase(order);
+			//order = lowerCase(order);
 
 			cout << order;
 
@@ -95,13 +95,23 @@ int main()
 			else {
 				cout << "That was not a proper menu. Would you like to try again, or would you like me to cancel your order? (Try Again = T, Leave = L) ";
 				cin >> shouldAbandon;
-				shouldAbandon = lowerCase(shouldAbandon);
-
-
+				//shouldAbandon = lowerCase(shouldAbandon);
 
 			}
 
-			cout << "Would you like to order another item?"
+			cout << "\nWould you like to order another item? (y/n) ";
+			getline(cin, dummy);
+			getline(cin, continueOrder);
+
+			if (continueOrder == "n") {
+				cout << "Heading to ordar summary: ";
+				ordering = false;
+			}
+			else if (continueOrder == "y") {
+			}
+			else {
+
+			}
 		}
 
 		if (shutDown) {
