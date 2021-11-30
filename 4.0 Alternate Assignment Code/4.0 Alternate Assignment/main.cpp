@@ -106,7 +106,7 @@ int main()
 					shutDown = true;
 					break;
 				} else if (shutDownPassword != "ShutMeDown!") {
-					shutDownPassword == "a";
+					shutDownPassword = "a";
 					continue;
 				}
 			}
