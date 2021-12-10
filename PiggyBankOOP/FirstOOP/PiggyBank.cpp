@@ -7,44 +7,63 @@
 #include "PiggyBank.h"
 #include <iostream>
 #include <iomanip>
+#include <string>
 
 using namespace std;
+
 PiggyBank::PiggyBank() {}
-PiggyBank::PiggyBank(string na, float p, float n, float d, float q, float l) {
+PiggyBank::PiggyBank(string na, int p, int n, int d, int q, int l) {
 	name = na;
 	pennies = p;
 	nickels = n;
 	dimes = d;
 	quarters = q;
 	timeSaved = l;
+	//cout << "Constructed";
 }
 
 string PiggyBank::getName() {
 	return name;
 }
 
-float PiggyBank::getPennies() {
+int PiggyBank::getPennies() {
 	return pennies;
 }
 
-float PiggyBank::getNickels() {
+int PiggyBank::getNickels() {
 	return nickels;
 }
 
-float PiggyBank::getDimes() {
+int PiggyBank::getDimes() {
 	return dimes;
 }
 
-float PiggyBank::getQuarters() {
+int PiggyBank::getQuarters() {
 	return quarters;
 }
 
-float PiggyBank::getTimeSaved() {
+int PiggyBank::getTimeSaved() {
 	return timeSaved;
 }
 
 float PiggyBank::calculateTotal() {
-	return (pennies)+(nickels * 5) + (dimes * 10) + (quarters * 25);
+	float toReturn = ((pennies)+(nickels * 5) + (dimes * 10) + (quarters * 25))/100.0;
+	return toReturn;
+}
+
+float PiggyBank::calculateSavingRate() {
+	float toReturn = (calculateTotal()) / timeSaved;
+	return toReturn;
+}
+
+float PiggyBank::calculateSavingsPerYear() {
+	float toReturn = (52 / timeSaved) * (calculateTotal());
+	return toReturn
+}
+
+string PiggyBank::printSavingsStatement() {
+	string output = name + ", you have saved $" + to_string(calculateTotal()) + " overall.\nThat's $" + to_string(calculateSavingRate()) + " a week!\nGreat job, " + name + ", at this rate, you can save $" + to_string(calculateSavingsPerYear()) + " this year!";
+	return output;
 }
 
 /*
