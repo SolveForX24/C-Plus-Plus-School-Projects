@@ -35,6 +35,7 @@ public:
 	int getTimeSaved();
 
 	// Useful functions
+	float round(float);
 	float calculateTotal();
 	float calculateSavingRate();
 	float calculateSavingsPerYear();
