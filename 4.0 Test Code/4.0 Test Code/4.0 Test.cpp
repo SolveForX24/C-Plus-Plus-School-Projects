@@ -73,7 +73,7 @@ int main()
         // Checks if the user would like to continue. If N or n, print a thank you message, and set running to false to break out of the loop.
         // If Y or y, use /n/n to add 2 lines of whitespace.
         // If neither, print a message stating the user used improper input, and end the program by set running to false.
-        cout << "Would you like to continue? (Y or N) ";
+        cout << "Would you like to continue? (Y or N, anything else ends the code.) ";
         getline(cin, continueRunning);
         if (continueRunning == "N" || continueRunning == "n") {
             cout << "Thank you for using this product.";
