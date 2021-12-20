@@ -36,10 +36,13 @@ public:
 
 	// Useful functions
 	float round(float);
-	float calculateTotal();
-	float calculateSavingRate();
-	float calculateSavingsPerYear();
-	std::string printSavingsStatement();
+	void calculateTotal();
+	float calculateTotalReturn();
+	void calculateSavingRate();
+	float calculateSavingRateReturn();
+	void calculateSavingsPerYear();
+	float calculateSavingsPerYearReturn();
+	void printSavingsStatement();
 
 	//friend std::ostream& operator<<(std::ostream&, const PiggyBank&);
 };
