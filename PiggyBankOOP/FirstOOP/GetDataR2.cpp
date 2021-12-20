@@ -59,7 +59,7 @@ bool getValidInt(int& t_int) {
 
 // Same as above, does not allow negatives.
 // Xander
-bool getValidIntNoNegNoZero(int& t_int) {
+bool getValidIntNoNeg(int& t_int) {
 	std::string intScratch = "";
 	bool isValid = true;
 
@@ -89,7 +89,7 @@ bool getValidIntNoNegNoZero(int& t_int) {
 
 // Same as above, does not allow negatives or a result of zero.
 // Xander
-bool getValidIntNoNeg(int& t_int) {
+bool getValidIntNoNegNoZero(int& t_int) {
 	std::string intScratch = "";
 	bool isValid = true;
 
