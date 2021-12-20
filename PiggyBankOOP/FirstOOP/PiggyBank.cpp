@@ -11,6 +11,7 @@
 
 using namespace std;
 
+// Constructor
 PiggyBank::PiggyBank() {}
 PiggyBank::PiggyBank(string na, int p, int n, int d, int q, int l) {
 	name = na;
@@ -22,6 +23,7 @@ PiggyBank::PiggyBank(string na, int p, int n, int d, int q, int l) {
 	//cout << "Constructed";
 }
 
+// Getters
 string PiggyBank::getName() {
 	return name;
 }
@@ -46,37 +48,51 @@ int PiggyBank::getTimeSaved() {
 	return timeSaved;
 }
 
-// This code found here: https://www.geeksforgeeks.org/rounding-floating-point-number-two-decimal-places-c-c/
-float PiggyBank::round(float var) {
-	// 37.66666 * 100 =3766.66
-	// 3766.66 + .5 =3767.16    for rounding off value
-	// then type cast to int so value is 3767
-	// then divided by 100 so the value converted into 37.67
-	float value = (int)(var * 100 + .5);
-	return (float)value / 100;
+
+// Calculates the total based on input and conversion factors.
+void PiggyBank::calculateTotal() {
+	float toReturn = ((pennies)+(nickels * 5) + (dimes * 10) + (quarters * 25)) / 100.0;
+	
+	cout << toReturn;
 }
 
-float PiggyBank::calculateTotal() {
-	float toReturn = ((pennies)+(nickels * 5) + (dimes * 10) + (quarters * 25))/100.0;
-	round(toReturn);
+// Same as above, but returns result.
+float PiggyBank::calculateTotalReturn() {
+	float toReturn = ((pennies)+(nickels * 5) + (dimes * 10) + (quarters * 25)) / 100.0;
 	return toReturn;
 }
 
-float PiggyBank::calculateSavingRate() {
-	float toReturn = (calculateTotal()) / timeSaved;
-	round(toReturn);
+// Gets total, then divides by weeks saved to give rate at which money is saved.
+void PiggyBank::calculateSavingRate() {
+	float toReturn = (calculateTotalReturn()) / timeSaved;
+	cout << toReturn;
+}
+
+// Same as above, but returns result.
+float PiggyBank::calculateSavingRateReturn() {
+	float toReturn = (calculateTotalReturn()) / timeSaved;
 	return toReturn;
 }
 
-float PiggyBank::calculateSavingsPerYear() {
-	float toReturn = (52 / timeSaved) * (calculateTotal());
-	round(toReturn);
+ // Takes 
+void PiggyBank::calculateSavingsPerYear() {
+	float toReturn = 52 * calculateSavingRateReturn();
+	cout << toReturn;
+}
+
+float PiggyBank::calculateSavingsPerYearReturn() {
+	float toReturn = 52 * calculateSavingRateReturn();
 	return toReturn;
 }
 
-string PiggyBank::printSavingsStatement() {
-	string output = name + ", you have saved $" + to_string(calculateTotal()) + " overall.\nThat's $" + to_string(calculateSavingRate()) + " a week!\nGreat job, " + name + ", at this rate, you can save $" + to_string(calculateSavingsPerYear()) + " this year!";
-	return output;
+void PiggyBank::printSavingsStatement() {
+	cout.setf(ios::fixed);
+	cout << setprecision(2) << name << ", you have saved $" << calculateTotalReturn() << " overall.\nThat's $"; 
+	calculateSavingRate();
+	cout << " a week!\nGreat job, " << name << ", at this rate, you can save $";
+	calculateSavingsPerYear();
+	cout << " this year!";;
+
 }
 
 /*
