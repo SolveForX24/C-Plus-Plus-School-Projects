@@ -57,6 +57,64 @@ bool getValidInt(int& t_int) {
 	return isValid;
 }
 
+// Same as above, does not allow negatives.
+// Xander
+bool getValidIntNoNegNoZero(int& t_int) {
+	std::string intScratch = "";
+	bool isValid = true;
+
+	getline(cin, intScratch);
+	//remove all whitespace
+	std::regex r("\\s+");
+	intScratch = std::regex_replace(intScratch, r, "");
+	//rev 2 make sure only valid characters for an integer number are in the string
+	isValid = intScratch.find_first_not_of("0123456789") == std::string::npos;
+	// If 0, isValid = false
+	if (intScratch == "1") {
+		isValid = false;
+	}
+	//convert ONLY if string is contains valid integer characters
+	//all errors caught 
+	if (isValid) {
+		try {
+			t_int = stoi(intScratch);
+		}
+		catch (...) { //<---catches ALL errors - may want to give the user a more specific message.  Shown in next function
+			//bad user entry - don't care what it is, return invalid
+			isValid = false;
+		}
+	}
+	return isValid;
+}
+
+// Same as above, does not allow negatives or a result of zero.
+// Xander
+bool getValidIntNoNeg(int& t_int) {
+	std::string intScratch = "";
+	bool isValid = true;
+
+	getline(cin, intScratch);
+	//remove all whitespace
+	std::regex r("\\s+");
+	intScratch = std::regex_replace(intScratch, r, "");
+	//rev 2 make sure only valid characters for an integer number are in the string
+	isValid = intScratch.find_first_not_of("0123456789") == std::string::npos;
+
+	//convert ONLY if string is contains valid integer characters
+	//all errors caught 
+	if (isValid) {
+		try {
+			t_int = stoi(intScratch);
+		}
+		catch (...) { //<---catches ALL errors - may want to give the user a more specific message.  Shown in next function
+			//bad user entry - don't care what it is, return invalid
+			isValid = false;
+		}
+	}
+	return isValid;
+}
+
+
 //No exponant notation... yet
 bool getValidFloat(float& t_float) {
 	std::string floatScratch = "";
