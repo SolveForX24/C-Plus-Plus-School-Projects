@@ -50,52 +50,48 @@ int PiggyBank::getTimeSaved() {
 
 
 // Calculates the total based on input and conversion factors.
-void PiggyBank::calculateTotal() {
-	float toReturn = ((pennies)+(nickels * 5) + (dimes * 10) + (quarters * 25)) / 100.0;
-	
-	cout << toReturn;
-}
-
-// Same as above, but returns result.
 float PiggyBank::calculateTotalReturn() {
 	float toReturn = ((pennies)+(nickels * 5) + (dimes * 10) + (quarters * 25)) / 100.0;
 	return toReturn;
 }
 
-// Gets total, then divides by weeks saved to give rate at which money is saved.
-void PiggyBank::calculateSavingRate() {
-	float toReturn = (calculateTotalReturn()) / timeSaved;
-	cout << toReturn;
-}
+// NOTE: I call a variable into these functions so that we can modify specifically the amount of time we are checking.
 
-// Same as above, but returns result.
-float PiggyBank::calculateSavingRateReturn() {
+
+// Gets total, then divides by weeks saved to give rate at which money is saved.
+float PiggyBank::calculateSavingRateReturn(int timeSaved) {
 	float toReturn = (calculateTotalReturn()) / timeSaved;
 	return toReturn;
 }
 
- // Takes 
-void PiggyBank::calculateSavingsPerYear() {
-	float toReturn = 52 * calculateSavingRateReturn();
-	cout << toReturn;
-}
-
-float PiggyBank::calculateSavingsPerYearReturn() {
-	float toReturn = 52 * calculateSavingRateReturn();
+ // Returns 52 times the saving rate to show the amount saved in a year.
+float PiggyBank::calculateSavingsPerYearReturn(int timeSaved) {
+	float toReturn = 52 * calculateSavingRateReturn(timeSaved);
 	return toReturn;
 }
 
 void PiggyBank::printSavingsStatement() {
+
+	// Setting precision
 	cout.setf(ios::fixed);
-	cout << setprecision(2) << name << ", you have saved $" << calculateTotalReturn() << " overall.\nThat's $"; 
-	calculateSavingRate();
-	cout << " a week!\nGreat job, " << name << ", at this rate, you can save $";
-	calculateSavingsPerYear();
-	cout << " this year!";;
+	// First chunk
+	cout << setprecision(2) << name << ", you have saved $" << calculateTotalReturn() << " overall.\nThat's $" << calculateSavingRateReturn(timeSaved) << " a week!";
+	// If saving for more then a year, calculate the specific amount saved in the year.
+	if (timeSaved > 52) {
+		cout << "\nGreat job, " << name << ", you saved $" << (calculateSavingRateReturn(timeSaved) * 52)  << " in one year! You're still on track now to save the same amount in total in the new year!";
+	}
+	// If saving for EXACTLY a year, print a special message.
+	else if (timeSaved == 52) {
+		cout << "\nGreat job, " << name << ", you saved $" << calculateTotalReturn() << " this past year! Can you save that much again in this next year?";
+	} // Else, just print how much you could save this year.
+	else {
+		cout << "\nGreat job, " << name << ", at this rate, you can save $" << calculateSavingsPerYearReturn(timeSaved) << " this year!";
+	}
+	
 
 }
 
-/*
+
 ostream& operator<<(ostream& output, const PiggyBank& aPiggyBank) {
 
 	output << "Private name data: " << aPiggyBank.name << endl <<
@@ -106,4 +102,4 @@ ostream& operator<<(ostream& output, const PiggyBank& aPiggyBank) {
 		"Private time saved data: " << aPiggyBank.timeSaved << endl;
 	return output;
 }
-*/
+
