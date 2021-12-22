@@ -13,6 +13,7 @@
 
 class PiggyBank
 {
+	// Variables
 private:
 	std::string name = "EMPTY";
 	int pennies = 0;
@@ -34,16 +35,12 @@ public:
 	int getQuarters();
 	int getTimeSaved();
 
-	// Useful functions
-	float round(float);
-	void calculateTotal();
+	// Object functions
 	float calculateTotalReturn();
-	void calculateSavingRate();
-	float calculateSavingRateReturn();
-	void calculateSavingsPerYear();
-	float calculateSavingsPerYearReturn();
+	float calculateSavingRateReturn(int);
+	float calculateSavingsPerYearReturn(int);
 	void printSavingsStatement();
 
-	//friend std::ostream& operator<<(std::ostream&, const PiggyBank&);
+	friend std::ostream& operator<<(std::ostream&, const PiggyBank&);
 };
 
