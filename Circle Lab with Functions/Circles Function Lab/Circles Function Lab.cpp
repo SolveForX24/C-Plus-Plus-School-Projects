@@ -29,7 +29,7 @@ int main()
     int loops;
     
     cout.setf(ios::fixed);
-    cout << setprecision(2);
+    cout << setprecision(1);
     
     // Getting number of loops to run, or radii to check.
     cout << "How many radii do you want to check? ";
