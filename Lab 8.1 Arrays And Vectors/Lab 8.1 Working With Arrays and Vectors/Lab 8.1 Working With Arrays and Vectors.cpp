@@ -1,10 +1,16 @@
-// Lab 8.1 Working With Arrays and Vectors.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+/*
+    Name: Xander Russell
+    Date: 2/7/22
+    Lab: Lab 8.1 Working With Arrays and Vectors
+    Extra: TBD
+*/
 
 #include <iostream>
 #include <iomanip>
 #include <vector>
 #include <random>
+
+#include "GetData.h"
 
 using namespace std;
 
@@ -18,7 +24,6 @@ int main()
     // Question 1
 
     // Create empty vector (could use array, wanted to try out vectors)
-
     vector<float> finalGrade = { 85.8,    93.7,   76,   88.5,   100,    91.3 };
     
     // Get sum of vector by looping through and adding up each of the values in the vector.
@@ -58,9 +63,18 @@ int main()
     }
 
     // Print out evens.
-    cout << "\nThere are a total of " << evensCount << " evens in this random array!";
+    cout << "\nThere are a total of " << evensCount << " evens in this random array!\n\n";
 
     // Question 3
 
+    int ages[5];
+    int agePrompt = 0;
+    for (int i = 0; i < 5; i++) {
+        do {
+            cout << "Please enter age #" << i + 1 << ": ";
+        } while (!getValidInt(agePrompt) || (agePrompt >= 0));
+        ages[i] = agePrompt;
+        cout << "At index " << i << ", there is " << ages[i];
+    }
 
 }
