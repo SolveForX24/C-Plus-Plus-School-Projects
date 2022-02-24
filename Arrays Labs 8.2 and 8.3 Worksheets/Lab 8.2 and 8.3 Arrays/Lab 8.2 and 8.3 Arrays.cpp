@@ -2,12 +2,17 @@
     Name: Xander Russell
     Lab: Lab 8.2 8.3 Worksheets
     Date: 2/23/22
-    Extra: Favorite function works with 
+    Extra: Favorite function works with variable size of array, which the user can choose the size of.
 */
 
 // Includes
 #include <iostream>
 #include <string>
+#include <algorithm>
+#include <array>
+#include <vector>
+#include <iterator>
+#include <cmath> 
 
 #include "GetData.h"
 
@@ -16,9 +21,14 @@ using namespace std;
 // Functions
 int favorite(int[], int, int);
 void palindrome(string[]);
+int distanceCheck(int[], double[]);
+void printArray(string[]);
+
 
 int main()
 {
+    // Prompt 1
+
     // Get length of the soon to be initialzed array.
     int numPrompt;
     int numArrayLen;
@@ -55,11 +65,35 @@ int main()
         cout << "Your favorite number, " << numPrompt << ", does not appear in the array.";
     }
 
+    // Prompt 2
+
     // Create string array.
     string potentialPalindromes[5] = { "radar", "warts", "evil", "racecar", "toot" };
 
     // Pass to palindrome function.
     palindrome(potentialPalindromes);
+
+    // Prompt 3
+
+    int distances[6] = { 50, 100, 200, 400, 800, 1000 };
+    double times[6] = { 7.24, 13.54, 28.03, 71.12, 158.67, 220.15 };
+
+    distanceCheck(distances, times);
+
+    // Prompt 4 
+    // Note: I was too lazy to come up with the values, and Matthew W. kindly provided the values for me.
+    string names[] = { "Flora Taylor", "Trenton Hubbard", "Kennedy Jeanes", "Claude Jeanes", "Caleb Langley" };
+    string addresses[] = { "206 Fairfax Drive, Red Bank NJ 07701", "4265 Caynor Circle, Piscataway NJ 08854", "2619 Lakewood Drive, Cliffside Park NJ 07010", "2979 Lake Road, Pleasantville NJ 08232", "4629 Virgil Street, Wayne NJ 07477"};
+    string numbers[] = { "848-466-3950", "908-220-4787", "201-545-5124", "609-377-3255", "732-910-4112" };
+
+    cout << endl;
+    printArray(names);
+    cout << endl;
+    printArray(addresses);
+    cout << endl;
+    printArray(numbers);
+
+    cout << "\nName: " << names[3] << "\nAddress: " << addresses[3] << "\nPhone Number: " << numbers[3];
 }
 
 // Favorite function.
@@ -107,4 +141,35 @@ void palindrome(string words[]) {
         cout << endl;
     }
 
+}
+
+// Distance function
+int distanceCheck(int distances[], double times[]) {
+    int distancePrompt;
+    do {
+        cout << "Please enter distance you want to check: ";
+    } while (!getValidInt(distancePrompt) || find(distances, distances+6, distancePrompt) == distances+6);
+
+    int n = sizeof(distances) / sizeof(distances[0]);
+    int index;
+    int i = 0;
+    while (i < n)
+    {
+        if (distances[i] == distancePrompt) {
+            index = i;
+            break;
+        }
+        i++;
+    }
+
+    cout << "Distance: " << distancePrompt << "\nTime: " << times[index];
+    return -1;
+}
+
+
+// Print array function
+void printArray(string arr[]) {
+    for (int i = 0; i < 5; i++) {
+        cout << arr[i] << endl;
+    }
 }
