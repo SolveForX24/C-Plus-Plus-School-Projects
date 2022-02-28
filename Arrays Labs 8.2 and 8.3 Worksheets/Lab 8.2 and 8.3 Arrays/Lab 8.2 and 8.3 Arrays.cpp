@@ -74,10 +74,12 @@ int main()
     palindrome(potentialPalindromes);
 
     // Prompt 3
-
+    
+    // Establish arrays
     int distances[6] = { 50, 100, 200, 400, 800, 1000 };
     double times[6] = { 7.24, 13.54, 28.03, 71.12, 158.67, 220.15 };
-
+    
+    // Call distanceCheck
     distanceCheck(distances, times);
 
     // Prompt 4 
@@ -85,14 +87,16 @@ int main()
     string names[] = { "Flora Taylor", "Trenton Hubbard", "Kennedy Jeanes", "Claude Jeanes", "Caleb Langley" };
     string addresses[] = { "206 Fairfax Drive, Red Bank NJ 07701", "4265 Caynor Circle, Piscataway NJ 08854", "2619 Lakewood Drive, Cliffside Park NJ 07010", "2979 Lake Road, Pleasantville NJ 08232", "4629 Virgil Street, Wayne NJ 07477"};
     string numbers[] = { "848-466-3950", "908-220-4787", "201-545-5124", "609-377-3255", "732-910-4112" };
-
+    
+    // Call printArray to print each of the arrays.
     cout << endl;
     printArray(names);
     cout << endl;
     printArray(addresses);
     cout << endl;
     printArray(numbers);
-
+    
+    // Print out the third in each array.
     cout << "\nName: " << names[3] << "\nAddress: " << addresses[3] << "\nPhone Number: " << numbers[3];
 }
 
@@ -145,11 +149,14 @@ void palindrome(string words[]) {
 
 // Distance function
 int distanceCheck(int distances[], double times[]) {
+    
+    // Get distance to check, and do not allow progress if what the user entered isn't an int or not in the distance array.
     int distancePrompt;
     do {
         cout << "Please enter distance you want to check: ";
     } while (!getValidInt(distancePrompt) || find(distances, distances+6, distancePrompt) == distances+6);
-
+    
+    // Find where that distance is exactly in the array.
     int n = sizeof(distances) / sizeof(distances[0]);
     int index;
     int i = 0;
@@ -161,7 +168,8 @@ int distanceCheck(int distances[], double times[]) {
         }
         i++;
     }
-
+    
+    // Print out what the user prompted and the corresponding time.
     cout << "Distance: " << distancePrompt << "\nTime: " << times[index];
     return -1;
 }
@@ -169,6 +177,7 @@ int distanceCheck(int distances[], double times[]) {
 
 // Print array function
 void printArray(string arr[]) {
+    // Loop through the array and print.
     for (int i = 0; i < 5; i++) {
         cout << arr[i] << endl;
     }
