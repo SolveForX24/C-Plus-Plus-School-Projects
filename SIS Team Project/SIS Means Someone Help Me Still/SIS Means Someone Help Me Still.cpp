@@ -2,7 +2,7 @@
     Name: Xander Russell
     Date: 2/28/22
     Lab: SIS
-    Extra: The user can input decimal grades, and the student can NOT have a phone number.
+    Extra: The user can input decimal grades, and the student is allowed to NOT have a phone number. Lastly, the user can choose how many assignments there are for a class. 
 */
 
 #include <iostream>
@@ -23,7 +23,7 @@ int main()
 
     // Creating the student info and student classes matrices.
     vector<vector<string>> studentInfo;
-    vector<vector<string>> studentClasses;
+    //vector<vector<string>> studentClasses;
 
     // These are the vectors that we add to in the course of adding in a student, then add to the matrix, alongside the prompt variables we will use.
     vector<string> studentInfoToInput;
@@ -40,22 +40,29 @@ int main()
     // Stuff to determine GPA and assignments.
     int assignmentCount;
     double classAverage = 0;
-    double classGPA;
+    double classGPA = 0;
+    double cumulativeAverage = 0;
 
     // Get amount of students.
     do {
-        cout << "Please enter the amount of you will input: ";
+        cout << "Please enter the amount of students you will input: ";
     } while (!getValidInt(studentCountPrompt) || studentCountPrompt < 0);
 
+    cout << "\nWe will start entering the first student now.\n";
     // Loop through the amount of students.
     for (int a = 0; a < studentCountPrompt; a++) {
+
+        // If restarting the loop, will inform the user we are moving to the next student.
+        if (a > 1) {
+            cout << "\n\nWe will enter the next students info now.\n\n";
+        }
 
         // Getting a lot of info.
         cout << "Please enter the students name: ";
         getline(cin, studentInfoPrompt);
         studentInfoToInput.push_back(studentInfoPrompt);
 
-        cout << "Please enter the students grade: ";
+        cout << "Please enter the grade the student is in: ";
         getline(cin, studentInfoPrompt);
         studentInfoToInput.push_back(studentInfoPrompt);
 
@@ -71,7 +78,7 @@ int main()
         do {
             cout << "Does the student have a phone number? (y/n) ";
             getline(cin, studentInfoPrompt);
-            cout << "studentInfoPrompt: " << studentInfoPrompt << endl;
+            //cout << "studentInfoPrompt: " << studentInfoPrompt << endl;
         } while (studentInfoPrompt != "y" && studentInfoPrompt != "n");
 
         // If yes, recieve that phone number.
@@ -84,7 +91,7 @@ int main()
         else {
             studentInfoToInput.push_back("N/A");
         }
-
+        // More info
         cout << "Please enter the students emergency contact name: ";
         getline(cin, studentInfoPrompt);
         studentInfoToInput.push_back(studentInfoPrompt);
@@ -93,6 +100,7 @@ int main()
         getline(cin, studentInfoPrompt);
         studentInfoToInput.push_back(studentInfoPrompt);
 
+        studentInfo.push_back(studentInfoToInput);
         // Getting classes and assignments.
 
         cout << "\nWe will now begin to enter " << studentInfoToInput[0] << "'s classes into the system.\n";
@@ -123,33 +131,50 @@ int main()
             // Loop through the amount of assignments and get the grade for each one.
             for (int j = 0; j < assignmentCount; j++) {
                 do {
-                    cout << "Please enter the grade " << studentInfoToInput[0] << " received for assignment #" << j + 1 << ": %";
-                } while (!getValidDouble(studentClassDoublePrompt) || studentClassDoublePrompt < 0);
+                    cout << "Please enter the grade " << studentInfoToInput[0] << " received for assignment #" << j + 1 << ": ";
+                } while (!getValidDouble(studentClassDoublePrompt) || studentClassDoublePrompt < 0 || studentClassDoublePrompt > 100);
                 classAverage += studentClassDoublePrompt;
                 studentClassesToInput.push_back(to_string(studentClassDoublePrompt));
             }
 
             // Calculate and add average.
             classAverage = classAverage / assignmentCount;
-            cout << "Class Average: %" << classAverage << ".\n";
+            cout << "Class Average: " << classAverage << "%.\n\n";
             studentClassesToInput.push_back(to_string(classAverage));
-            studentClasses.push_back(studentClassesToInput);
+            studentInfo.push_back(studentClassesToInput);
+            cumulativeAverage += classAverage;
 
             // Clear out the array we are inputting.
             studentClassesToInput.clear();
             classAverage = 0;
         }
+        
+        // Calculating GPA of student, and adding it into student info.
+        cumulativeAverage = cumulativeAverage / 5;
+        classGPA = (cumulativeAverage / 100) * 5;
 
-        for (int i = 0; i < 5; i++)
+        studentClassesToInput.push_back(to_string(classGPA));
+        studentInfo.push_back(studentClassesToInput);
+
+        studentClassesToInput.clear();
+        cumulativeAverage = 0;
+        
+        /*
+        for (int i = 0; i < studentInfo.size(); i++)
         {
-            for (int j = 0; j < studentClasses[i].size(); j++)
+            for (int j = 0; j < studentInfo[i].size(); j++)
             {
-                cout << studentClasses[i][j] << " ";
+                cout << studentInfo[i][j] << " ";
             }
 
             // Newline for new row
             cout << endl << endl;
         }
+        */
+
+        studentInfoToInput.clear();
+
+        
 
     }
 }
