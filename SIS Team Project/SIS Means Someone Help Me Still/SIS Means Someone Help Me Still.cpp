@@ -9,10 +9,13 @@
 #include <vector>
 #include <string>
 #include <iomanip> 
+#include <algorithm> 
 
 #include "GetData.h"
 
 using namespace std;
+
+bool customFind(vector<vector<string>>, string, int&, int&);
 
 int main()
 {
@@ -32,6 +35,9 @@ int main()
     vector<string> studentClassesToInput;
     string studentClassStringPrompt;
     string currentClass;
+
+    string studentPrompt;
+
     int studentClassIntPrompt;
     double studentClassDoublePrompt;
 
@@ -79,10 +85,10 @@ int main()
             cout << "Does the student have a phone number? (y/n) ";
             getline(cin, studentInfoPrompt);
             //cout << "studentInfoPrompt: " << studentInfoPrompt << endl;
-        } while (studentInfoPrompt != "y" && studentInfoPrompt != "n");
+        } while (studentInfoPrompt != "y" && studentInfoPrompt != "Y" && studentInfoPrompt != "n" && studentInfoPrompt != "N");
 
         // If yes, recieve that phone number.
-        if (studentInfoPrompt == "y") {
+        if (studentInfoPrompt == "y" || studentInfoPrompt == "Y") {
             cout << "Please enter the students phone number: ";
             getline(cin, studentInfoPrompt);
             studentInfoToInput.push_back(studentInfoPrompt);
@@ -106,7 +112,7 @@ int main()
         cout << "\nWe will now begin to enter " << studentInfoToInput[0] << "'s classes into the system.\n";
 
         // Looping 5 times to get all classes and assignments.
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 1; i++) {
             // Get the class name.
             cout << "Please enter one of " << studentInfoToInput[0] << "'s classes: ";
             getline(cin, studentClassStringPrompt);
@@ -148,7 +154,7 @@ int main()
             studentClassesToInput.clear();
             classAverage = 0;
         }
-        
+
         // Calculating GPA of student, and adding it into student info.
         cumulativeAverage = cumulativeAverage / 5;
         classGPA = (cumulativeAverage / 100) * 5;
@@ -158,7 +164,7 @@ int main()
 
         studentClassesToInput.clear();
         cumulativeAverage = 0;
-        
+
         /*
         for (int i = 0; i < studentInfo.size(); i++)
         {
@@ -171,10 +177,55 @@ int main()
             cout << endl << endl;
         }
         */
-
+        
         studentInfoToInput.clear();
 
-        
+    }
 
+    int row;
+    int col;
+    while (true) {
+        do {
+            cout << "Which students info would you like to check? (x/X to leave) ";
+            getline(cin, studentPrompt);
+        } while (customFind(studentInfo, studentPrompt, row, col));
+
+
+        if (studentPrompt == ("x") || studentPrompt == ("X")) {
+            cout << "Thank you!";
+            break;
+        }
+
+        cout << "Name: " << studentInfo[row][0] << "\n";
+        cout << "Grade: " << studentInfo[row][1] << "\n";
+        cout << "Year of Admission: " << studentInfo[row][2] << "\n";
+        cout << "Guidance Counseler: " << studentInfo[row][3] << "\n";
+        cout << "Phone Number: " << studentInfo[row][4] << "\n";
+        cout << "Emergency Contact: " << studentInfo[row][5] << "\n";
+        cout << "Emergency Contact Info: " << studentInfo[row][6] << "\n";
+    }
+
+}
+
+bool customFind(vector<vector<string>> vect, string key, int& row, int& col) {
+
+    if (key == "x" || key == "X") {
+        return false;
+    }
+
+    for (size_t z = 0; z < vect.size(); z++) {
+        // This code taken and modified slightly from here: http://www.cplusplus.com/forum/general/71371/
+        // Loop through vector
+        auto i = find(vect[z].begin(), vect[z].end(), key);
+        if (vect[z].end() != i) {
+            //cout << "Found key at row " << z << " col " << i - vect[z].begin() << '\n';
+            row = z;
+            col = i - vect[z].begin();
+            return false;
+        }
+        else {
+            cout << "Student not found.\n";
+            return true;
+        }
     }
 }
