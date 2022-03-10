@@ -239,7 +239,7 @@ bool customFind(vector<vector<string>> vect, string key, int& row, int& col, int
         return false;
     }
 
-    for (int i = 0; i <= loopCount; i += 6) {
+    for (int i = 0; i <= loopCount * 7; i += 7) {
         cout << "At row " << i << ", there is " << vect[i][0] << "\n\n";
         if (vect[i][0] == key) {
             cout << "Student Found!\n";
