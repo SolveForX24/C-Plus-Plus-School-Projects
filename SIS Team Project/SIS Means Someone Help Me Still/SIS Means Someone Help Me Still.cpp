@@ -15,7 +15,7 @@
 
 using namespace std;
 
-bool customFind(vector<vector<string>>, string, int&, int&);
+bool customFind(vector<vector<string>>, string, int&, int&, int);
 
 int main()
 {
@@ -43,6 +43,8 @@ int main()
 
     int studentCountPrompt;
 
+    int limit;
+
     // Stuff to determine GPA and assignments.
     int assignmentCount;
     double classAverage = 0;
@@ -59,13 +61,15 @@ int main()
     for (int a = 0; a < studentCountPrompt; a++) {
 
         // If restarting the loop, will inform the user we are moving to the next student.
-        if (a > 1) {
+        if (a >= 1) {
             cout << "\n\nWe will enter the next students info now.\n\n";
         }
 
         // Getting a lot of info.
-        cout << "Please enter the students name: ";
-        getline(cin, studentInfoPrompt);
+        do {
+            cout << "Please enter the students name: ";
+            getline(cin, studentInfoPrompt);
+        } while (studentInfoPrompt == "x" || studentInfoPrompt == "X");
         studentInfoToInput.push_back(studentInfoPrompt);
 
         cout << "Please enter the grade the student is in: ";
@@ -112,7 +116,7 @@ int main()
         cout << "\nWe will now begin to enter " << studentInfoToInput[0] << "'s classes into the system.\n";
 
         // Looping 5 times to get all classes and assignments.
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < 5; i++) {
             // Get the class name.
             cout << "Please enter one of " << studentInfoToInput[0] << "'s classes: ";
             getline(cin, studentClassStringPrompt);
@@ -182,49 +186,69 @@ int main()
 
     }
 
+    // After getting all student data, we will work in this menu until user ends the program.
+
+    // Important variables for acquiring pos of student data.
     int row;
     int col;
+
     while (true) {
+
+        // Get student to get data of, making sure they are in the array in the same process of checking that, we get pos of student info.
         do {
             cout << "Which students info would you like to check? (x/X to leave) ";
             getline(cin, studentPrompt);
-        } while (customFind(studentInfo, studentPrompt, row, col));
+        } while (customFind(studentInfo, studentPrompt, row, col, studentCountPrompt));
 
-
+        // If prompt was x or X, program ends.
         if (studentPrompt == ("x") || studentPrompt == ("X")) {
             cout << "Thank you!";
             break;
         }
 
-        cout << "Name: " << studentInfo[row][0] << "\n";
+        // Print initial data.
+        cout << "\nName: " << studentInfo[row][0] << "\n";
         cout << "Grade: " << studentInfo[row][1] << "\n";
         cout << "Year of Admission: " << studentInfo[row][2] << "\n";
         cout << "Guidance Counseler: " << studentInfo[row][3] << "\n";
         cout << "Phone Number: " << studentInfo[row][4] << "\n";
         cout << "Emergency Contact: " << studentInfo[row][5] << "\n";
-        cout << "Emergency Contact Info: " << studentInfo[row][6] << "\n";
+        cout << "Emergency Contact Info: " << studentInfo[row][6] << "\n\n";
+
+        cout << setprecision(2);
+
+        // Loop through each class, then each assignment, printing data for all.
+        for (int i = 1; i <= 5; i++) {
+            cout << "Class #" << i << ": " << studentInfo[row + i][0] << "\n";
+            cout << "Class Credits: " << studentInfo[row + i][1] << "\n";
+            for (int n = 2; n < studentInfo[row + i].size(); n++) {
+                cout << "Assignment #" << n - 1 << " Grade: " << studentInfo[row + i][n] << "%.\n";
+            }
+            cout << "Class Average: " << studentInfo[row + i][studentInfo[row + i].size()-1] << "%.\n\n";
+        }
+
+        // GPA
+        cout << "Total GPA: " << studentInfo[row + 6][0] << "\n\n";
     }
 
 }
 
-bool customFind(vector<vector<string>> vect, string key, int& row, int& col) {
+bool customFind(vector<vector<string>> vect, string key, int& row, int& col, int loopCount) {
 
     if (key == "x" || key == "X") {
         return false;
     }
 
-    for (size_t z = 0; z < vect.size(); z++) {
-        // This code taken and modified slightly from here: http://www.cplusplus.com/forum/general/71371/
-        // Loop through vector
-        auto i = find(vect[z].begin(), vect[z].end(), key);
-        if (vect[z].end() != i) {
-            //cout << "Found key at row " << z << " col " << i - vect[z].begin() << '\n';
-            row = z;
-            col = i - vect[z].begin();
+    for (int i = 0; i <= loopCount; i += 6) {
+        cout << "At row " << i << ", there is " << vect[i][0] << "\n\n";
+        if (vect[i][0] == key) {
+            cout << "Student Found!\n";
+            row = i;
+            col = 0;
             return false;
         }
         else {
-            cout << "Student not found.\n";
+            cout << "Student not found.";
             return true;
         }
     }
