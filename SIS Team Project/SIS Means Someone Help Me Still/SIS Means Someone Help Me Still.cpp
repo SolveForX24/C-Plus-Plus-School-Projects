@@ -186,6 +186,7 @@ int main()
 
     }
 
+
     // After getting all student data, we will work in this menu until user ends the program.
 
     // Important variables for acquiring pos of student data.
@@ -222,7 +223,7 @@ int main()
             cout << "Class #" << i << ": " << studentInfo[row + i][0] << "\n";
             cout << "Class Credits: " << studentInfo[row + i][1] << "\n";
             for (int n = 2; n < studentInfo[row + i].size(); n++) {
-                cout << "Assignment #" << n - 1 << " Grade: " << studentInfo[row + i][n] << "%.\n";
+                cout << "Assignment #" << n - 1 << " Grade: " << setprecision(2) << studentInfo[row + i][n] << "%.\n";
             }
             cout << "Class Average: " << studentInfo[row + i][studentInfo[row + i].size()-1] << "%.\n\n";
         }
@@ -233,23 +234,26 @@ int main()
 
 }
 
+// My function to find the student in the vector.
 bool customFind(vector<vector<string>> vect, string key, int& row, int& col, int loopCount) {
-
+    
+    // If the key entered is X, we don't need to run this program, so we just leave.
     if (key == "x" || key == "X") {
         return false;
     }
-
-    for (int i = 0; i <= loopCount * 7; i += 7) {
-        cout << "At row " << i << ", there is " << vect[i][0] << "\n\n";
+    
+    // Loop through the vector, checking each value in each row and the first column.
+    for (int i = 0; i <= loopCount * 7 - 1; i++) {
+        //cout << "At row " << i << ", there is " << vect[i][0] << "\n\n";
+        // If key found, print as such, update the pass-by reference variables and leave the function.
         if (vect[i][0] == key) {
             cout << "Student Found!\n";
             row = i;
             col = 0;
             return false;
         }
-        else {
-            cout << "Student not found.";
-            return true;
-        }
     }
+    // If key not found, print as such, and leave.
+    cout << "Student not found.\n\n";
+    return true;
 }
