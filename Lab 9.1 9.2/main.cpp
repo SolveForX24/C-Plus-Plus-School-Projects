@@ -1,7 +1,6 @@
 #include <iostream>
 #include <vector>
 #include <time.h>
-
 #include "console.h"
 
 using namespace std;
@@ -13,7 +12,6 @@ int binarySearch(vector<int>, int, int, int);
 int main() {
 
     // Lab 9.1
-
     // Part 1
     // Set and sort raffle list and get user ticket.
     vector<int> raffles = {307, 521, 416, 154, 243, 893};
@@ -34,10 +32,12 @@ int main() {
     // Set nums list and get user choice.
     vector<int> nums = { 5, 6, 10, 14, 15, 16, 18, 22};
 
-    //int userChoice = prompt_int_min("What number do you think is in the vector? ", 0);
     int userChoice;
-    bool userChoiceIsInt = stoi_if_valid("7", userChoice);
-    cout << "Past prompt";
+    cout << "What number do you think is in the vector? ";
+    cin >> userChoice;
+
+    cout << "Past Prompt: " << userChoice << endl;
+
     // Run search.
     result = binarySearch(nums, 0, nums.size() - 1, userChoice); // 0 is the lowerbound (l), n-1 is the upperbond (r), and x is the key variable.
 
@@ -139,10 +139,11 @@ void ExchangeSort(vector <int> &num)
 // This function taken from Mr. Botero's example
 int binarySearch(vector<int> arr , int l, int r, int x)
 {
-    if (r >= l)
+    cout << "In function\n";
+    if (r >= l && l <= arr.size()-2)
     {
         int mid = l + (r - l) / 2;
-
+        cout << "Mid: " << mid << ". L: " << l << ". R: " << r << endl;
         // If the element is present at the middle
         // itself
         if (arr[mid] == x)

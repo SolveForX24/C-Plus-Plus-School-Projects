@@ -11,12 +11,11 @@
 bool stoi_if_valid(std::string check, int& converted) {
     // Remove whitespace
     check = std::regex_replace(check, std::regex("\\s+"), "");
-    std::cout << check << "\n";
+
     // Make sure string only contains int-safe characters
     if (check.find_first_not_of("-0123456789") != std::string::npos) return false;
 
     int number_of_dashes = (int) std::count(check.begin(), check.end(), '-');
-    std::cout << number_of_dashes << "\n";
     // Only allow 1 dash
     if (number_of_dashes > 1) return false;
     // Make sure dash is first character
@@ -25,7 +24,6 @@ bool stoi_if_valid(std::string check, int& converted) {
     // Try converting, return false if it fails
     try {
         converted = std::stoi(check);
-        std::cout << converted << "\n";
         return true;
     } catch(...) {
         return false;
@@ -82,9 +80,7 @@ int prompt_int_min(const std::string& prompt, const int min) {
     int value;
     do {
         value = prompt_int(prompt);
-
     } while (value < min);
-
     return value;
 }
 
