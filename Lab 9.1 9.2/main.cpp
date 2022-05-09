@@ -29,7 +29,6 @@ int main() {
         cout << "Congrats! You're a winner!\n\n";
     }
 
-    cout.flush();
     // Part 2
     // Set nums list and get user choice.
     vector<int> nums = { 5, 6, 10, 14, 15, 16, 18, 22};
@@ -37,11 +36,12 @@ int main() {
     int userChoice = prompt_int_min("What number do you think is in the vector? ", 0);
 
 
-    //cout << "Past Prompt: " << userChoice << endl;
+    cout << "Past Prompt: " << userChoice << endl;
 
     // Run search.
     result = binarySearch(nums, 0, nums.size() - 1, userChoice); // 0 is the lowerbound (l), n-1 is the upperbond (r), and x is the key variable.
 
+    cout << "Past search.\n";
     // Share results.
     if (result == -1) {
         cout << "Sorry! That number was not in the vector. :(\n\n";
@@ -49,17 +49,26 @@ int main() {
         cout << "Correct! That number was in the vector.\n\n";
     }
 
-    cout.flush();
     // Lab 9.2
 
     // Setting random seed.
+
+    cout << "About to randomize:\n";
     srand(time(NULL));
+    cout << "Seed generated\n";
     int randDummy = rand() % 2 + 1; // generate a num between 1 and 2 to reset randomness
+    cout << "randDummy generated: " << randDummy << "\n";
+
 
     // Generate random vector.
     vector <int> randNums;
+    int generatedInt;
+    cout << "Vector randNums initialized.\n";
     for (int i = 0; i <= 50; i++) {
-        randNums[i] = rand() % 200 + 1; // generate a num between 1 and 200
+        generatedInt = rand() % 200 + 1; // generate a num between 1 and 200
+        cout << "Generated Int: " << generatedInt << "\n";
+        randNums[i] = generatedInt;
+        cout << "Random Number in vector index " << i << ": " << randNums[i] << "\n";
     }
 
     // Get user key.
@@ -144,11 +153,11 @@ void ExchangeSort(vector <int> &num)
 // This function taken from Mr. Botero's example
 int binarySearch(vector<int> arr , int l, int r, int x)
 {
-    cout << "In function\n";
+    //cout << "In function\n";
     if (r >= l && l <= arr.size()-1)
     {
         int mid = l + (r - l) / 2;
-        cout << "Mid: " << mid << ". L: " << l << ". R: " << r << endl;
+        //cout << "Mid: " << mid << ". L: " << l << ". R: " << r << endl;
         // If the element is present at the middle
         // itself
         if (arr[mid] == x)
