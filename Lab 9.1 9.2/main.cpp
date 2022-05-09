@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <string>
 #include <time.h>
 #include "console.h"
 
@@ -28,15 +29,15 @@ int main() {
         cout << "Congrats! You're a winner!\n\n";
     }
 
+    cout.flush();
     // Part 2
     // Set nums list and get user choice.
     vector<int> nums = { 5, 6, 10, 14, 15, 16, 18, 22};
 
-    int userChoice;
-    cout << "What number do you think is in the vector? ";
-    cin >> userChoice;
+    int userChoice = prompt_int_min("What number do you think is in the vector? ", 0);
 
-    cout << "Past Prompt: " << userChoice << endl;
+
+    //cout << "Past Prompt: " << userChoice << endl;
 
     // Run search.
     result = binarySearch(nums, 0, nums.size() - 1, userChoice); // 0 is the lowerbound (l), n-1 is the upperbond (r), and x is the key variable.
@@ -48,6 +49,7 @@ int main() {
         cout << "Correct! That number was in the vector.\n\n";
     }
 
+    cout.flush();
     // Lab 9.2
 
     // Setting random seed.
@@ -61,8 +63,11 @@ int main() {
     }
 
     // Get user key.
-    int userRandNumChoice = prompt_int_min("What number do you think is in the vector? ", 0);
-
+    int userRandNumChoice;
+    cout << "What number do you think is in the random int vector? ";
+    
+    cin >> userRandNumChoice;
+    cout << "Past Prompt: " << userRandNumChoice;
     // Print out vector in both ways.
     cout << "Array Sorted in Descending Order by the Bubble Sort";
     BubbleSort(randNums);
@@ -133,14 +138,14 @@ void ExchangeSort(vector <int> &num)
 }
 
 // A recursive binary search function. It returns
-//   location of x in given array arr[l..r] is present,
+//   location of x in given array arr[l..r] if present,
 //   otherwise -1.
 
 // This function taken from Mr. Botero's example
 int binarySearch(vector<int> arr , int l, int r, int x)
 {
     cout << "In function\n";
-    if (r >= l && l <= arr.size()-2)
+    if (r >= l && l <= arr.size()-1)
     {
         int mid = l + (r - l) / 2;
         cout << "Mid: " << mid << ". L: " << l << ". R: " << r << endl;
