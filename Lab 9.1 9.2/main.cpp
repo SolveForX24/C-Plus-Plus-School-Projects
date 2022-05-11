@@ -1,3 +1,10 @@
+/*
+  Name: Xander Russell
+  Lab: Lab 9.1 9.2
+  Extra: Error trapped
+  Date: 5/11/22
+*/
+
 #include <iostream>
 #include <vector>
 #include <string>
@@ -7,7 +14,7 @@
 using namespace std;
 
 void BubbleSort(vector<int>&);
-void ExchangeSort(vector <int> &);
+void ExchangeSort(vector <int>&);
 int binarySearch(vector<int>, int, int, int);
 
 int main() {
@@ -15,7 +22,7 @@ int main() {
     // Lab 9.1
     // Part 1
     // Set and sort raffle list and get user ticket.
-    vector<int> raffles = {307, 521, 416, 154, 243, 893};
+    vector<int> raffles = { 307, 521, 416, 154, 243, 893 };
     ExchangeSort(raffles);
     int userTicket = prompt_int_min("What is the number on your ticket? ", 0);
 
@@ -25,27 +32,29 @@ int main() {
     // Share results.
     if (result == -1) {
         cout << "Sorry! You're ticket is not a winner. :(\n\n";
-    } else {
+    }
+    else {
         cout << "Congrats! You're a winner!\n\n";
     }
 
     // Part 2
     // Set nums list and get user choice.
-    vector<int> nums = { 5, 6, 10, 14, 15, 16, 18, 22};
+    vector<int> nums = { 5, 6, 10, 14, 15, 16, 18, 22 };
 
     int userChoice = prompt_int_min("What number do you think is in the vector? ", 0);
 
 
-    cout << "Past Prompt: " << userChoice << endl;
+    //cout << "Past Prompt: " << userChoice << endl;
 
     // Run search.
     result = binarySearch(nums, 0, nums.size() - 1, userChoice); // 0 is the lowerbound (l), n-1 is the upperbond (r), and x is the key variable.
 
-    cout << "Past search.\n";
+    //cout << "Past search.\n";
     // Share results.
     if (result == -1) {
         cout << "Sorry! That number was not in the vector. :(\n\n";
-    } else {
+    }
+    else {
         cout << "Correct! That number was in the vector.\n\n";
     }
 
@@ -53,41 +62,41 @@ int main() {
 
     // Setting random seed.
 
-    cout << "About to randomize:\n";
+    //cout << "About to randomize:\n";
     srand(time(NULL));
-    cout << "Seed generated\n";
+    //cout << "Seed generated\n";
     int randDummy = rand() % 2 + 1; // generate a num between 1 and 2 to reset randomness
-    cout << "randDummy generated: " << randDummy << "\n";
+    //cout << "randDummy generated: " << randDummy << "\n";
 
 
     // Generate random vector.
     vector <int> randNums;
     int generatedInt;
-    cout << "Vector randNums initialized.\n";
+    //cout << "Vector randNums initialized.\n";
     for (int i = 0; i <= 50; i++) {
         generatedInt = rand() % 200 + 1; // generate a num between 1 and 200
-        cout << "Generated Int: " << generatedInt << "\n";
-        randNums[i] = generatedInt;
-        cout << "Random Number in vector index " << i << ": " << randNums[i] << "\n";
+        //cout << "Generated Int: " << generatedInt << "\nInt i: " << i << "\n";
+        randNums.push_back(generatedInt);
+        //cout << "Random Number in vector index " << i << ": " << randNums[i] << "\n";
     }
 
     // Get user key.
     int userRandNumChoice;
     cout << "What number do you think is in the random int vector? ";
-    
+
     cin >> userRandNumChoice;
-    cout << "Past Prompt: " << userRandNumChoice;
+    //cout << "Past Prompt: " << userRandNumChoice;
     // Print out vector in both ways.
-    cout << "Array Sorted in Descending Order by the Bubble Sort";
+    cout << "\nArray Sorted in Descending Order by the Bubble Sort\n\n";
     BubbleSort(randNums);
     for (int i = 0; i <= 50; i++) {
-        cout << randNums[i];
+        cout << randNums[i] << endl;
     }
 
-    cout << "Array Sorted in Ascending Order by the Exchange Sort";
+    cout << "\nArray Sorted in Ascending Order by the Exchange Sort\n\n";
     ExchangeSort(randNums);
     for (int i = 0; i <= 50; i++) {
-        cout << randNums[i];
+        cout << randNums[i] << endl;
     }
 
     // Run search.
@@ -96,7 +105,8 @@ int main() {
     // Share results.
     if (result == -1) {
         cout << "Sorry! That number was not in the array. :(\n\n";
-    } else {
+    }
+    else {
         cout << "Correct! That number was in the array.\n\n";
     }
 
@@ -110,16 +120,16 @@ void BubbleSort(vector <int>& num)
     int i, j, flag = 1; // set flag to 1 to start first pass
     int temp; // holding variable
     int numLength = num.size();
-    for(i = 1; (i <= numLength) && flag; i++)
+    for (i = 1; (i <= numLength) && flag; i++)
     {
         flag = 0;
-        for (j=0; j < (numLength -1); j++)
+        for (j = 0; j < (numLength - 1); j++)
         {
-            if (num[j+1] > num[j])// descending order
+            if (num[j + 1] > num[j])// descending order
             {
                 temp = num[j];// swap elements
-                num[j] = num[j+1];
-                num[j+1] = temp;
+                num[j] = num[j + 1];
+                num[j + 1] = temp;
                 flag = 1; // indicates that a swap occurred.
             }
         }
@@ -127,14 +137,14 @@ void BubbleSort(vector <int>& num)
 }
 
 //Exchange Sort Function for ascending Order
-void ExchangeSort(vector <int> &num)
+void ExchangeSort(vector <int>& num)
 {
     int i, j;
     int temp; // holding variable
     int numLength = num.size();
-    for (i=0; i < (numLength -1); i++) // element to be compared
+    for (i = 0; i < (numLength - 1); i++) // element to be compared
     {
-        for(j = (i+1); j < numLength; j++) // rest of the elements
+        for (j = (i + 1); j < numLength; j++) // rest of the elements
         {
             if (num[i] > num[j]) // descending order, swap to > for ascending.
             {
@@ -151,10 +161,10 @@ void ExchangeSort(vector <int> &num)
 //   otherwise -1.
 
 // This function taken from Mr. Botero's example
-int binarySearch(vector<int> arr , int l, int r, int x)
+int binarySearch(vector<int> arr, int l, int r, int x)
 {
     //cout << "In function\n";
-    if (r >= l && l <= arr.size()-1)
+    if (r >= l && l <= arr.size() - 1)
     {
         int mid = l + (r - l) / 2;
         //cout << "Mid: " << mid << ". L: " << l << ". R: " << r << endl;
