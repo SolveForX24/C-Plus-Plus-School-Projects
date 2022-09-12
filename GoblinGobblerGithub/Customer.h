@@ -10,26 +10,24 @@
 
 
 class Customer {
+public:
 
-private:
+    //Variables
     std::string name = "EMPTY";
     int itemOneAmount = 0;
     int itemTwoAmount = 0;
     int itemThreeAmount = 0;
     int itemFourAmount = 0;
     int itemFiveAmount = 0;
+    float subtotal = 0;
 
-public:
 
     //Constructors
     Customer();
     Customer(std::string);
 
-    std::string getName();
-
+    //Methods
     void increaseItemCount(int, int);
-
-
 };
 
 
