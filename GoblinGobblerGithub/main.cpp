@@ -3,6 +3,9 @@
     Lab: Gobbler Goblin Grotto
     Date: 9/20/22
     Extra: The user can abandon the order while ordering.
+
+    NOTE: The formatting is kind of wacky when printed out,
+    I'm not sure if it's my fault or CLion's fault, but it's very weird nonetheless.
  */
 
 
