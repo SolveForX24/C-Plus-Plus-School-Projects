@@ -4,8 +4,9 @@
     Date: 9/20/22
     Extra: The user can abandon the order while ordering.
 
-    NOTE: The formatting is kind of wacky when printed out,
-    I'm not sure if it's my fault or CLion's fault, but it's very weird nonetheless.
+    NOTE: The formatting can get kind of wacky when printed out.
+    I'm not sure if it's my fault, CLion's fault or Matthew Weirs console codes' fault,
+    but it's very weird nonetheless. I'm not sure how to fix it.
  */
 
 
@@ -56,6 +57,7 @@ int main() {
                 break;
             case 3:
                 // Exit the program
+                cout << "Thank you! Have a nice day!";
                 running = false;
                 continue;
         }
