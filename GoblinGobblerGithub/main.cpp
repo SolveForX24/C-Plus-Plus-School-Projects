@@ -137,7 +137,7 @@ void placeOrder(bool signedIn, string name) {
         }
 
         // Get how many of the item the user wants.
-        itemAmount = prompt_int_min("Please enter how many of these you want:     ", 1);
+        itemAmount = prompt_int_min("Please enter how many of these you want: ", 1);
 
         // Increase the amount of the item in the class.
         customer.increaseItemCount(itemAmount, itemPrompt);
