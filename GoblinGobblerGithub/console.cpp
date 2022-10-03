@@ -1,3 +1,11 @@
+/*    
+    *    Title: Console
+    *    Author: mweir-mcst
+    *    Date: 2022
+    *    Code version: N/A
+    *    Availability: https://github.com/mweir-mcst/console
+*/
+
 /*
  * Written by Matthew Weir (mweir-mcst)
  * Some code taken from Darryl DiGiovanna
