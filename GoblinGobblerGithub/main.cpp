@@ -7,6 +7,7 @@
     NOTE: The formatting can get kind of wacky when printed out.
     I'm not sure if it's my fault, CLion's fault or Matthew Weirs console codes' fault,
     but it's very weird nonetheless. I'm not sure how to fix it.
+    NOTE 2: Yeah it was CLion, running the program in Repl.it yields proper formatting.
  */
 
 
